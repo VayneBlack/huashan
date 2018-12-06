@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: test-service-provider
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+tm:
+  manager:
+    url: http://localhost:8899/tx/manager/
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://root:123@39.104.99.211:9091/eureka/,http://root:123@39.104.99.211:9092/eureka/,
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+    prefer-ip-address: true

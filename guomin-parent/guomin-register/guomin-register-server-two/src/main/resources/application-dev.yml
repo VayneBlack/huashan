@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: register-two
+  security:
+    user:
+      name: root
+      password: 123
+
+server:
+  port: 9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 3
+  client:
+    serviceUrl:
+      defaultZone: http://root:123@localhost:9091/eureka/

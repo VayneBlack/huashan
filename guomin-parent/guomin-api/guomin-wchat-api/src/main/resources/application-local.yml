@@ -1,0 +1,44 @@
+server:
+  port: 7073
+spring:
+  application:
+    name: wchat-api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+exception:
+    handler:
+       enable: true
+cors:
+    enable: true
+
+aliyun:
+    msg:
+      enable: true
+      accessKeyId: LTAItZnXWtTjngQK
+      accessKeySecret: LeWr9pEHqUo69eG4qv3ksHcTUWP48C
+    oss:
+      enable: true
+      accessKeyId: LTAItZnXWtTjngQK
+      accessKeySecret: LeWr9pEHqUo69eG4qv3ksHcTUWP48C
+      endpoint: http://oss-cn-beijing.aliyuncs.com
+      bucketName: gm-file
+
+
+
+dubbo:
+  registry:
+    address : zookeeper://192.168.1.130:2181?backup=192.168.1.130:2182,192.168.1.130:2183
+    client: curator
+    timeout: 5000
+  application:
+    id: wchat-api
+    name: wchat-api
+    qos-enable: false
+    qos-port: 2234
+
+tm.manager.url: http://localhost:8899/tx/manager/

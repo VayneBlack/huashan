@@ -1,0 +1,46 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: user-service-provider
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+druid:
+  url: jdbc:mysql://192.168.1.130:3306/dubbo?useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+  userName: root
+  password: li203204
+  driverClassName: com.mysql.cj.jdbc.Driver
+  initialSize: 10
+  maxActive: 500
+  minIdle: 1
+  MaxWait: 60000
+  poolPreparedStatements: true
+  maxPoolPreparedStatementPerConnectionSize: 66
+  validationQuery: select 1
+  testOnBorrow: false
+  testOnReturn: false
+  testWhileIdle: true
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 2520000
+  removeAbandonedTimeout: 1800
+
+exception:
+    handler:
+       enable: true
+
+dubbo:
+  registry:
+    address : zookeeper://192.168.1.130:2181?backup=192.168.1.130:2182,192.168.1.130:2183
+    client: curator
+    subscribe: false
+    timeout: 5000
+  application:
+    id: user-service-provider
+    name: user-service-provider
+    qos-enable: false
+    qos-port: 2239

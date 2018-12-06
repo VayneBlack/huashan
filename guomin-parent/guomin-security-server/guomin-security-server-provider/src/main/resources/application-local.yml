@@ -1,0 +1,22 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: security-server-provider
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+dubbo:
+  registry:
+    address : zookeeper://192.168.1.130:2181?backup=192.168.1.130:2182,192.168.1.130:2183
+    client: curator
+    subscribe: false
+  application:
+    id: security-server-provider,
+    name: security-server-provider
+    qos-enable: false
+    qos-port: 2234
